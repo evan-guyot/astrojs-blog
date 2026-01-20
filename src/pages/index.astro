@@ -6,6 +6,8 @@ const pageTitle = "Home";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  	<h2>My awesome blog subtitle</h2>
+  <div class="text-center">
+  	<h2 class="my-8 text-center text-lg font-medium text-pretty text-gray-600 dark:text-gray-400 sm:text-xl/8">Welcome on this website that I made during a course about Astro JS</h2>
     <Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+  </div>
 </BaseLayout>

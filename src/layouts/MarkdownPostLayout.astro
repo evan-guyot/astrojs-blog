@@ -4,35 +4,30 @@ import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+  <div class="max-w-2xl mx-auto px-4 py-8">
+    <article class="prose prose-gray dark:prose-invert max-w-none">
+      <p class="italic text-lg mb-4">{frontmatter.description}</p>
+      
+      <div class="flex flex-col gap-2 mb-6 text-sm border-b pb-6">
+        <p><span class="font-semibold">Published:</span> {frontmatter.pubDate.toLocaleDateString()}</p>
+        <p><span class="font-semibold">Written by:</span> {frontmatter.author}</p>
+      </div>
 
-    <div class="tags">
+      {frontmatter.image?.url && (
+        <img src={frontmatter.image.url} class="w-full max-w-md rounded-lg my-6 mx-auto" alt={frontmatter.image.alt} />
+      )}
+
+      <div class="flex flex-wrap gap-2 mb-8 justify-center">
         {frontmatter.tags.map((tag: string) => (
-        <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+          <a href={`/tags/${tag}`} class="inline-block px-3 py-1 rounded-full border text-sm font-medium hover:underline transition-all">
+            #{tag}
+          </a>
         ))}
-    </div>
-    <slot />
+      </div>
+
+      <div class="prose prose-gray dark:prose-invert max-w-none">
+        <slot />
+      </div>
+    </article>
+  </div>
 </BaseLayout>
-
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>

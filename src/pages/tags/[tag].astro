@@ -23,9 +23,8 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout pageTitle={tag}>
-    <p>Posts tagged with {tag}</p>
-    <ul>
+<BaseLayout pageTitle={`Posts with tag : ${tag}`}>
+    <ul class="grid gap-6 w-full justify-items-center my-12">
         { posts.map((post) => <BlogLink url={`/posts/${post.id}/`} title={post.data.title} />) }
     </ul>
 </BaseLayout>

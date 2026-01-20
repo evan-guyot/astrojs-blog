@@ -1,15 +1,15 @@
 ---
 import Social from './Social.astro';
 ---
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
 
-<footer>
-  <Social platform="linkedin" username="evan-guyot" />
-  <Social platform="github" username="evan-guyot" />
+
+<footer class="rounded-base shadow-xs border-t border-gray-400 dark:border-gray-600 mt-4">
+  <div class="w-full mx-auto max-w-7xl p-4 md:flex md:items-center md:justify-between">
+      <span class="text-sm text-body sm:text-center">© 2026 Evan Guyot. All Rights Reserved.
+    </span>
+    <div class="flex flex-wrap gap-2 items-center mt-3 text-sm font-medium text-body sm:mt-0">
+      <Social platform="linkedin" username="evan-guyot" />
+      <Social platform="github" username="evan-guyot" />
+    </div>
+  </div>
 </footer>
