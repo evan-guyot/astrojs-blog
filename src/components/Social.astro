@@ -1,4 +1,9 @@
 ---
+interface Props {
+  platform: "twitter" | "github" | "linkedin";
+  username: string;
+}
+
 const { platform, username } = Astro.props;
 ---
 

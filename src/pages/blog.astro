@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogLink from '../components/BlogLink.astro';
+import type { Post } from "../types/post";
 
 const allPosts = await getCollection("blog");
 const pageTitle = "Blog";
@@ -11,7 +12,7 @@ const pageTitle = "Blog";
 	<div class="max-w-4xl mx-auto px-4 py-8 flex flex-col items-center">
 		<p class="text-lg mb-8 text-center text-gray-600 dark:text-gray-400 sm:text-xl/8">This is where I will post about my journey learning Astro.</p>
 		<ul class="grid grid-cols-2 gap-6 w-full justify-items-center">
- 	  		{allPosts.map((post: any) => <BlogLink url={`/posts/${post.id}/`} title={post.data.title} />)}
+ 	  		{allPosts.map((post: Post) => <BlogLink url={`/posts/${post.id}/`} title={post.data.title} />)}
 		</ul>
 	</div>
 </BaseLayout>
